@@ -6,7 +6,7 @@
   - @posts.each do |post|
     %li
       %p.content= post.content
-      %p.published= l(post.created_at)
+      %p.published= l(post.created_at, format: :short)
       %p.actions
         =link_to '編集', edit_post_path(post)
         \|
