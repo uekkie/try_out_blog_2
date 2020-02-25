@@ -3,7 +3,7 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .row
-    .form-inputs.col-3
+    .form-inputs.col
       = f.input :content
-    .form-actions.col
-      = f.button :submit
+  .form-actions
+    = f.button :submit, class: "btn btn-primary"

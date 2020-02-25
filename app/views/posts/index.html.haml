@@ -5,7 +5,13 @@
 %ul
   - @posts.each do |post|
     %li
-      %p.content = post.content
+      %p.content= post.content
       %p.published= l(post.created_at)
+      %p.actions
+        =link_to '編集', edit_post_path(post)
+        \|
+        =link_to '削除', post_path(post), method: :delete, data: {confirm: "削除しますか？"}
+
+
 
 
