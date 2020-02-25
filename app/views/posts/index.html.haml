@@ -1,2 +1,11 @@
-%h1 Posts#index
-%p Find me in app/views/posts/index.html.haml
+%h1 全体タイムライン
+
+= link_to '投稿する', new_post_path, class: 'btn btn-primary'
+
+%ul
+  - @posts.each do |post|
+    %li
+      %p.content = post.content
+      %p.published= l(post.created_at)
+
+
