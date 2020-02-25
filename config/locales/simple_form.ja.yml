@@ -1,4 +1,4 @@
-en:
+ja:
   simple_form:
     "yes": 'はい'
     "no": 'いいえ'
@@ -10,6 +10,10 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "項目を確認してください:"
+    hints:
+      post:
+        content: '140文字以内で入力してください'
+
     # Examples
     # labels:
     #   defaults:
