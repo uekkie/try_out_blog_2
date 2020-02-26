@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
-  validates :name, presense: true, uniquiness: true, length: { maximum: 20 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
 
 end
