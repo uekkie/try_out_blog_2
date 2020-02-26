@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def create
     @post = @user.posts.build(post_params)
     if @post.save
-      redirect_to user_post_path(@user, @post)
+      redirect_to posts_path(@user)
     else
       render :new
     end
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to user_post_path(@user, @post)
+      redirect_to posts_path(@user)
     else
       render :edit
     end
