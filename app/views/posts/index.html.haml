@@ -4,16 +4,19 @@
   %thead
     %th 内容
     %th 投稿日
+    %th 投稿者
     %th
   %tbody
-    - @posts.each do |post|
+    - @posts.includes(:user).each do |post|
       %tr
         %td.content= post.content
         %td.published= l(post.created_at, format: :short)
+        %td.user= post.user.name
         %td.actions
-          =link_to '編集', edit_user_post_path(post.user, post)
-          \|
-          =link_to '削除', user_post_path(post.user, post), method: :delete, data: {confirm: "削除しますか？"}
+          - if post.writen?(current_user)
+            =link_to '編集', edit_user_post_path(post.user, post)
+            \|
+            =link_to '削除', user_post_path(post.user, post), method: :delete, data: {confirm: "削除しますか？"}
 
 
 
