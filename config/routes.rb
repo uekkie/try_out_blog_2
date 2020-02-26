@@ -8,7 +8,12 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index]
   
-  resources :user do
+  resources :users do
     resources :posts
   end
+
+  scope module: :users do
+    get "profile" 
+  end
+
 end
