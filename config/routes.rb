@@ -5,5 +5,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "posts#index"
-  resources :posts
+
+  resources :posts, only: [:index]
+  
+  resources :user do
+    resources :posts
+  end
 end
