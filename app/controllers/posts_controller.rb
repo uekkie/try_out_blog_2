@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: %i[show edit new create update destroy]
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
