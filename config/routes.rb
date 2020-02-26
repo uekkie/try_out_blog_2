@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index]
   
-  resources :users do
+  resources :users, only: %i[edit update] do
     resources :posts
   end
 
