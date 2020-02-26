@@ -1,7 +1,5 @@
 %h1 全体タイムライン
 
-= link_to '投稿する', new_post_path, class: 'btn btn-primary'
-
 %table.table.table-striped
   %thead
     %th 内容
@@ -13,9 +11,9 @@
         %td.content= post.content
         %td.published= l(post.created_at, format: :short)
         %td.actions
-          =link_to '編集', edit_post_path(post)
+          =link_to '編集', edit_user_post_path(post.user, post)
           \|
-          =link_to '削除', post_path(post), method: :delete, data: {confirm: "削除しますか？"}
+          =link_to '削除', user_post_path(post.user, post), method: :delete, data: {confirm: "削除しますか？"}
 
 
 
