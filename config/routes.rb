@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   resources :users, only: %i[edit update] do
     resources :posts, only: %i[new create edit update destroy]
+    get :following, :followers, on: :member
   end
 
   scope module: :users do
