@@ -4,6 +4,6 @@
 
   .row
     .form-inputs.col
-      = f.input :content
+      = f.input :content, as: :text, input_html: {row: 4}
   .form-actions
     = f.button :submit, class: "btn btn-primary"
