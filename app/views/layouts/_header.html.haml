@@ -1,6 +1,6 @@
 %nav.navbar.navbar-light.bg-light
   - if user_signed_in?
-    = link_to '140文字のフリーダム', root_path, class: 'nav-item nav-link active'
+    = link_to '140文字のフリーダム', root_path, class: 'nav-item active'
     = link_to 'ユーザー一覧', users_path, class: 'nav-item nav-link'
     = link_to '投稿する', new_user_post_path(current_user), class: 'nav-item nav-link'
     = link_to "プロフィール(#{current_user.name})", profile_path, class: 'nav-item nav-link'
