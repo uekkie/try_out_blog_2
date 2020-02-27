@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[show edit new create update destroy]
+  before_action :authenticate_user!
   before_action :set_user, only: %i[new show edit create update destroy]
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = current_user.posts.order(created_at: :desc)
   end
 
   def show
