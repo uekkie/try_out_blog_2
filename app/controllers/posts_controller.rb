@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.where(user: current_user.timeline_ids ).order(created_at: :desc)
+    @posts = Post.where(user: current_user.timeline_ids ).recent
   end
 
   def show

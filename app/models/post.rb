@@ -3,6 +3,8 @@ class Post < ApplicationRecord
 
   validates :content, presence: true, length: {maximum: 140}
 
+  scope :recent, -> { order(created_at: :desc) }
+
   def writen?(user)
     self.user == user
   end
