@@ -9,7 +9,7 @@
         = simple_format(h(post.content))
     .row
       .col.actions.text-right
-        - if post.writen?(current_user)
+        - if post.writer?(current_user)
           =link_to '編集', edit_user_post_path(post.user, post)
           \|
           =link_to '削除', user_post_path(post.user, post), method: :delete, data: {confirm: "削除しますか？"}

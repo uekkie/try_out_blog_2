@@ -5,7 +5,7 @@ class Post < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
-  def writen?(user)
+  def writer?(user)
     self.user == user
   end
 end
