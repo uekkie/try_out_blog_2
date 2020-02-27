@@ -24,6 +24,10 @@ class User < ApplicationRecord
     false
   end
 
+  def timeline_ids
+    [id, following_ids].flatten
+  end
+
   def follow(other_user)
     following << other_user
   end
