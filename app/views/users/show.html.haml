@@ -1,5 +1,5 @@
 %h1= @user.name
 
-= render 'follow_form', user: @user
+= render 'follow_form', user: @user if current_user && current_user != @user
 
 =link_to '戻る', posts_path
