@@ -2,4 +2,4 @@
 
 = render 'follow_form', user: @user if current_user && current_user != @user
 
-= render 'posts/post_list', posts: @user.posts
+= render 'posts/post_list', posts: @user.posts.recent
