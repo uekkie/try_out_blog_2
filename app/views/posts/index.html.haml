@@ -11,7 +11,7 @@
       %tr
         %td.content= post.content
         %td.published= l(post.created_at, format: :short)
-        %td.user= post.user.name
+        %td.user= link_to post.user.name, user_path(post.user)
         %td.actions
           - if post.writen?(current_user)
             =link_to '編集', edit_user_post_path(post.user, post)

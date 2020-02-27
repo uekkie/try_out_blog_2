@@ -1,0 +1,8 @@
+%h1= @user.name
+
+- if current_user.following?(@user)
+  = link_to 'フォロー解除', relationship_path(@user), method: :delete
+- else
+  = button_to 'フォローする', relationships_path, {params: {followed_id: @user.id} }
+
+=link_to '戻る', posts_path
