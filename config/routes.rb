@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: %i[index]
   
-  resources :users, only: %i[show edit update] do
+  resources :users, only: %i[index show edit update] do
     resources :posts, only: %i[new create edit update destroy]
     get :following, :followers, on: :member
   end
