@@ -2,8 +2,8 @@
 
 = render 'posts/likes/like_form', post: @post
 
-%h3 いいねしたユーザー
-#liked_users
+%h3.mt-3 いいねしたユーザー
+#liked_users.mt-4
   = render 'users/user_list', users: @post.liked_users
 
 - if current_user == @post.user

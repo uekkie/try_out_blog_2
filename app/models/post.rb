@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_many :likes, dependent: :destroy
-
+  has_many :liked_users, through: :likes, source: :user
   validates :content, presence: true, length: {maximum: 140}
 
   scope :recent, -> { order(created_at: :desc) }
@@ -13,9 +13,5 @@ class Post < ApplicationRecord
 
   def liked_user?(user)
     likes.find_by(user_id: user.id)
-  end
-
-  def liked_users
-    User.where(id: likes.pluck(:user_id)).order(created_at: :asc)
   end
 end
