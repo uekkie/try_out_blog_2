@@ -7,9 +7,10 @@
     .row.m-1
       .col.content
         = simple_format(h(post.content))
+        = link_to '詳細', user_post_path(post.user, post)
     .row
       .col
-        = render 'posts/likes/like_form', user: current_user, post: post if current_user != post.user
+        = render 'posts/likes/like_form', post: post if current_user != post.user
       .col.actions.text-right
         - if post.writer?(current_user)
           =link_to '編集', edit_user_post_path(post.user, post)

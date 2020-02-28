@@ -1,4 +1,4 @@
-%div{id: "like_form_#{post.id}" }
+%div{ id: "like_form_#{post.id}" }
   - if post.liked_user?(current_user)
     = render 'posts/likes/unlike', post: post
   - else

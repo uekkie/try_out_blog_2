@@ -14,4 +14,8 @@ class Post < ApplicationRecord
   def liked_user?(user)
     likes.find_by(user_id: user.id)
   end
+
+  def liked_users
+    User.where(id: likes.pluck(:user_id))
+  end
 end
