@@ -8,6 +8,8 @@
       .col.content
         = simple_format(h(post.content))
     .row
+      .col
+        = render 'posts/likes/like_form', user: current_user, post: post if current_user != post.user
       .col.actions.text-right
         - if post.writer?(current_user)
           =link_to '編集', edit_user_post_path(post.user, post)
