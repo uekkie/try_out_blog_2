@@ -1,5 +1,5 @@
 %ul.list-group
-- posts.includes(:user).each do |post|
+- posts.each do |post|
   %li.list-group-item
     .row
       .col.user_name= link_to post.user.name, user_path(post.user)
