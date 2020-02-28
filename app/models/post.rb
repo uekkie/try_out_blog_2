@@ -16,6 +16,6 @@ class Post < ApplicationRecord
   end
 
   def liked_users
-    User.where(id: likes.pluck(:user_id))
+    User.where(id: likes.pluck(:user_id)).order(created_at: :asc)
   end
 end
