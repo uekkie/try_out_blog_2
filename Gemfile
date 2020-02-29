@@ -18,11 +18,13 @@ gem 'simple_form'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'better_errors'
   gem "binding_of_caller"
+  gem 'rspec-rails'
 end
 
 group :development do

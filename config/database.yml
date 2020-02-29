@@ -6,11 +6,11 @@ default: &default
 
 development:
   <<: *default
-  database: try_out_blog_1_development
+  database: try_out_blog_2_development
 
 test:
   <<: *default
-  database: try_out_blog_1_test
+  database: try_out_blog_2_test
 
 production:
   url: <%= ENV['DATABASE_URL'] %>
