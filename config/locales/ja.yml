@@ -12,6 +12,7 @@ ja:
     models:
       user: ユーザー
       post: 投稿
+      comment: コメント
     attributes:
       user:
         name: 名前
@@ -19,6 +20,8 @@ ja:
         profile: プロフィール
         blog_url: ブログURL
       post:
+        content: 内容
+      comment:
         content: 内容
     errors:
       models:

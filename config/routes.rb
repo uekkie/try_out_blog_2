@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show edit update] do
     resources :posts, only: %i[show new create edit update destroy] do
       resources :likes, only: %i[create destroy], module: :posts
+      resources :comments, only: %i[create]
     end
     get :following, :followers, on: :member
   end

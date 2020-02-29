@@ -3,6 +3,8 @@ class Post < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+
+  has_many :comments, dependent: :destroy
   validates :content, presence: true, length: {maximum: 140}
 
   scope :recent, -> { order(created_at: :desc) }

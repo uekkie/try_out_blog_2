@@ -10,4 +10,8 @@
   =link_to '編集', edit_user_post_path(@user, @post)
   \|
   =link_to '削除', user_post_path(@user, @post), method: :delete, data: {confirm: "削除しますか？"}
+
+= render "comments/form", post: @post, comment: Comment.new
+
+= render "comments/comment_list", comments: @post.comments.older
 =link_to '戻る', posts_path
