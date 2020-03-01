@@ -1,7 +1,8 @@
 %h1= @post.content
 
-#images
-  = image_tag @post.image_url
+#images.m-3
+  = link_to @post.image_url, target: :_blank do
+    = image_tag @post.image_url(:thumbnail) if @post.image.present?
 = render 'posts/likes/like_form', post: @post
 
 %h3.mt-3 いいねしたユーザー
