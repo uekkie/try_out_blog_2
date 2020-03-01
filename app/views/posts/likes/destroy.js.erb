@@ -1,0 +1,2 @@
+$("#like_form_<%= @post.id %>").html("<%= j(render 'posts/likes/like', post: @post ) %>");
+$("#liked_users").html("<%= j( render 'users/user_list', users: @post.liked_users ) %>");

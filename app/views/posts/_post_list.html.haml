@@ -1,5 +1,5 @@
 %ul.list-group
-- posts.includes(:user).each do |post|
+- posts.each do |post|
   %li.list-group-item
     .row
       .col.user_name= link_to post.user.name, user_path(post.user)
@@ -7,7 +7,12 @@
     .row.m-1
       .col.content
         = simple_format(h(post.content))
+        = image_tag post.image_url(:thumbnail) if post.image.present?
+
+        = link_to '詳細', user_post_path(post.user, post)
     .row
+      .col
+        = render 'posts/likes/like_form', post: post if current_user != post.user
       .col.actions.text-right
         - if post.writer?(current_user)
           =link_to '編集', edit_user_post_path(post.user, post)

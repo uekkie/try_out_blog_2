@@ -1,0 +1,10 @@
+%h3 コメント一覧
+%ul.list-group
+- comments.includes(:user).each do |comment|
+  %li.list-group-item
+    .row
+      .col.user_name= link_to comment.user.name, user_path(comment.user)
+      %small.col-3.published.text-muted= l(comment.created_at, format: :short)
+    .row.m-1
+      .col.content
+        = simple_format(h(comment.content))

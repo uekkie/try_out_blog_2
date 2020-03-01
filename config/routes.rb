@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :posts, only: %i[index]
   
   resources :users, only: %i[index show edit update] do
-    resources :posts, only: %i[new create edit update destroy]
+    resources :posts, only: %i[show new create edit update destroy] do
+      resources :likes, only: %i[create destroy], module: :posts
+      resources :comments, only: %i[create]
+    end
     get :following, :followers, on: :member
   end
 
@@ -18,4 +21,8 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: %i[create destroy]
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/lo'
+  end
 end
