@@ -7,7 +7,6 @@
       = f.input :content, as: :text, input_html: {row: 4}
   .row
     .form-inputs.col
-      = image_tag(post.image.to_s)
-      = f.file_field :image
+      = f.input :image, as: :image_preview, input_html: { preview_version: :thumbnail }
   .form-actions
     = f.button :submit, class: "btn btn-primary"

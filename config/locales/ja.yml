@@ -21,6 +21,7 @@ ja:
         blog_url: ブログURL
       post:
         content: 内容
+        image: 添付画像
       comment:
         content: 内容
     errors:
