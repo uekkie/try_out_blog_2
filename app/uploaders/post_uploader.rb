@@ -9,7 +9,7 @@ class PostUploader < CarrierWave::Uploader::Base
   end
 
   version :thumbnail do
-    process :resize_to_fit => [300, 300]
+    process :resize_to_fit => [300, nil]
   end
 
   def public_id
