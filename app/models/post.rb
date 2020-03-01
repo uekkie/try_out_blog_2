@@ -9,6 +9,8 @@ class Post < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
+  mount_uploader :image, PostUploader
+
   def writer?(user)
     self.user == user
   end

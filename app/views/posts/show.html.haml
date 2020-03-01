@@ -1,5 +1,7 @@
 %h1= @post.content
 
+#images
+  = image_tag @post.image_url
 = render 'posts/likes/like_form', post: @post
 
 %h3.mt-3 いいねしたユーザー
