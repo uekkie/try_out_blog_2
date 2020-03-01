@@ -22,4 +22,7 @@ Rails.application.routes.draw do
 
   resources :relationships, only: %i[create destroy]
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/lo'
+  end
 end

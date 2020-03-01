@@ -1,8 +1,11 @@
 class CommentMailer < ApplicationMailer
   default from: 'hirocueki@gmail.com'
 
-  def commented
-    @post = params[:post]
-    mail(to: @post.user.email, subject: 'コメントがつきました！')
+  def commented(comment)
+    @comment = comment
+    mail(
+        subject: "#{comment.user.name}さんからコメントがつきました！",
+        to: comment.post.user.email
+    )
   end
 end

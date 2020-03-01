@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     comment = @post.comments.build(comment_params)
     comment.user = current_user
     if comment.save
-      CommentMailer.with(post: @post).commented.deliver_later
+      CommentMailer.commented(comment).deliver_later
     end
     redirect_to user_post_url(@post.user, @post)
   end
