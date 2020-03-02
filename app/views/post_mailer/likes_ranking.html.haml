@@ -1,0 +1,17 @@
+%h1 デイリーランキングです
+
+%ol.list-group
+- @posts.includes(:user).each do |post|
+  %li.list-group-item
+    .row
+      .col
+        = "（#{post.likes_count} いいね）"
+    .row
+      .col.user_name
+        = post.user.name
+      %small.col-3.published.text-muted= l(post.created_at, format: :short)
+    .row.m-1
+      .col.content
+        = simple_format(h(post.content))
+        = link_to '詳細', user_post_url(post.user, post)
+
