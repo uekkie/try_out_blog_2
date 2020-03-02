@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }, format: { with: /\A[a-zA-Z]+\Z/ }
   validates :profile, length: { maximum: 200 }
 
-  scope :has_email, -> { where.not(email: '') }
+  scope :exists_email, -> { where.not(email: '') }
 
   def email_required?
     false
