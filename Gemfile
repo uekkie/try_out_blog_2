@@ -27,6 +27,7 @@ group :development, :test do
   gem 'better_errors'
   gem "binding_of_caller"
   gem 'rspec-rails'
+  gem 'faker'
 end
 
 group :development do

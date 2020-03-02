@@ -18,4 +18,14 @@ class Post < ApplicationRecord
   def liked_user?(user)
     likes.find_by(user_id: user.id)
   end
+
+  def self.likes_ranking_yesterday(limit = 10)
+    Post.find(
+      Like.yesterday
+        .group(:post_id)
+        .order(count: :desc)
+        .limit(limit)
+        .pluck(:post_id)
+    )
+  end
 end
