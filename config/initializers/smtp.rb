@@ -23,9 +23,11 @@ ActionMailer::Base.smtp_settings = {
 }
 
 elsif Rails.env.development?
-  ActionMailer::Base.perform_caching = true
+  ActionMailer::Base.add_delivery_method :sendgrid, Mail::SendGrid, api_key: ENV['SENDGRID_API_KEY']
 
-  ActionMailer::Base.delivery_method = :letter_opener_web
+  ActionMailer::Base.perform_caching = true
+  ActionMailer::Base.delivery_method = :sendgrid
+  # ActionMailer::Base.delivery_method = :letter_opener_web
 else
   ActionMailer::Base.delivery_method = :test
 end
