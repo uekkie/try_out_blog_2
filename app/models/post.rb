@@ -30,9 +30,10 @@ class Post < ApplicationRecord
 
   def self.likes_ranking_yesterday(limit = 10)
     ids = Like.yesterday
-        .more_than_likes_posts
-        .limit(limit)
-        .pluck(:post_id)
+              .group_by_post
+              .order_count_desc
+              .limit(limit)
+              .pluck(:post_id)
     Post.where(id: ids).order_by_ids(ids)
   end
 end
