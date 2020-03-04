@@ -1,6 +1,4 @@
 class PostMailer < ApplicationMailer
-  default from: 'hirocueki@gmail.com'
-
   def likes_ranking(users, posts)
     @posts = posts
 
