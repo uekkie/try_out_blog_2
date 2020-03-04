@@ -1,22 +1,13 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title 140文字のフリーダム
-    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    .container
-      %h1 「いいね数」デイリーランキング
+%h1 「いいね数」デイリーランキング
 
-      %p 前日の「いいね」数が多かった10位までの投稿をお送りします。
+%p 前日の「いいね」数が多かった10位までの投稿をお送りします。
 
-      - if @posts.blank?
-        前日に「いいね」された投稿はありませんでした。
-      - else
-        %ol
-          - @posts.includes(:user).each do |post|
-            %li
-              = "（#{post.likes_count} いいね）"
-              = post.user.name
-              = link_to h(post.content), user_post_url(post.user, post)
+- if @posts.blank?
+  前日に「いいね」された投稿はありませんでした。
+- else
+  %ol
+    - @posts.includes(:user).each do |post|
+      %li
+        = "（#{post.likes_count} いいね）"
+        = post.user.name
+        = link_to h(post.content), user_post_url(post.user, post)

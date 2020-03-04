@@ -1,20 +1,11 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title 140文字のフリーダム
-    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    .container
-      %p あなたの投稿にコメントが付きました！
+%p あなたの投稿にコメントが付きました！
 
-      %h4 投稿内容
-      %p.blockquote
-        = @comment.post.content
+%h4 投稿内容
+%p.blockquote
+  = @comment.post.content
 
-      %h4
-        = "#{@comment.user.name}さんのコメント"
-      %blockquote.blockquote.bg-light
-        = @comment.content
-      =link_to 'コメントの付いた投稿を確認する', user_post_url(@comment.post.user, @comment.post)
+%h4
+  = "#{@comment.user.name}さんのコメント"
+%blockquote.blockquote.bg-light
+  = @comment.content
+=link_to 'コメントの付いた投稿を確認する', user_post_url(@comment.post.user, @comment.post), class: 'btn btn-primary'

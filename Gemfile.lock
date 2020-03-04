@@ -87,6 +87,8 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    css_parser (1.7.1)
+      addressable
     debug_inspector (0.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -125,6 +127,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
+    htmlentities (4.3.4)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -170,6 +173,13 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.2.2)
+    premailer (1.11.1)
+      addressable
+      css_parser (>= 1.6.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.10.3)
+      actionmailer (>= 3)
+      premailer (~> 1.7, >= 1.7.9)
     public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
@@ -314,6 +324,7 @@ DEPENDENCIES
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
+  premailer-rails
   puma (~> 4.1)
   rails (~> 6.0.2)
   rspec-rails
