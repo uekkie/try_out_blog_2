@@ -25,15 +25,15 @@ class Post < ApplicationRecord
       order_by << "WHEN id='#{id}' THEN #{index}"
     end
     order_by << "end"
-    order(order_by.join(" "))
+    order(Arel.sql(order_by.join(" ")))
   end
 
   def self.likes_ranking_yesterday(limit = 10)
-    ids = Like.yesterday
-              .group_by_post
-              .order_count_desc
+    ids = Like.all.group(:post_id)
+              .order(count: :desc)
               .limit(limit)
               .pluck(:post_id)
+
     Post.where(id: ids).order_by_ids(ids)
   end
 end

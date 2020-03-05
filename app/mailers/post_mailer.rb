@@ -1,8 +1,9 @@
 class PostMailer < ApplicationMailer
-  def likes_ranking(users, posts)
-    @posts = posts
+  def likes_ranking()
+    @posts = Post.likes_ranking_yesterday
+    users = User.exists_email
 
-    if @post.present?
+    if @posts.present?
       mail(
         subject: "「いいね」デイリーランキング",
         to: users.pluck(:email)
