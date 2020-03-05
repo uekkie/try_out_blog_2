@@ -1,4 +1,4 @@
-# 140文字のフリーダム
+# ミニブログ2（140文字のフリーダム）
 
 ## heroku
-https://polar-chamber-25440.herokuapp.com/
+https://damp-woodland-97216.herokuapp.com/
