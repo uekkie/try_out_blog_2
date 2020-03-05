@@ -1,2 +1,11 @@
-コメントを受け取りました！（HTML）
-=link_to 'コメントの付いた投稿を確認する', user_post_url(@comment.post.user, @comment.post)
+%p あなたの投稿にコメントが付きました！
+
+%h4 投稿内容
+%p.blockquote
+  = @comment.post.content
+
+%h4
+  = "#{@comment.user.name}さんのコメント"
+%blockquote.blockquote.bg-light
+  = @comment.content
+=link_to 'コメントの付いた投稿を確認する', user_post_url(@comment.post.user, @comment.post), class: 'btn btn-primary'

@@ -18,4 +18,22 @@ class Post < ApplicationRecord
   def liked_user?(user)
     likes.find_by(user_id: user.id)
   end
+
+  def self.order_by_ids(ids)
+    order_by = ["case"]
+    ids.each_with_index.map do |id, index|
+      order_by << "WHEN id='#{id}' THEN #{index}"
+    end
+    order_by << "end"
+    order(Arel.sql(order_by.join(" ")))
+  end
+
+  def self.likes_ranking_yesterday(limit = 10)
+    ids = Like.all.group(:post_id)
+              .order(count: :desc)
+              .limit(limit)
+              .pluck(:post_id)
+
+    Post.where(id: ids).order_by_ids(ids)
+  end
 end

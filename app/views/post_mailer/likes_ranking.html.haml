@@ -1,0 +1,13 @@
+%h1 「いいね数」デイリーランキング
+
+%p 前日の「いいね」数が多かった10位までの投稿をお送りします。
+
+- if @posts.blank?
+  前日に「いいね」された投稿はありませんでした。
+- else
+  %ol
+    - @posts.includes(:user).each do |post|
+      %li
+        = "（#{post.likes_count} いいね）"
+        = post.user.name
+        = link_to h(post.content), user_post_url(post.user, post)

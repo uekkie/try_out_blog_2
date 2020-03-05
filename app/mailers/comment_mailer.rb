@@ -1,6 +1,4 @@
 class CommentMailer < ApplicationMailer
-  default from: 'hirocueki@gmail.com'
-
   def commented(comment)
     @comment = comment
 
