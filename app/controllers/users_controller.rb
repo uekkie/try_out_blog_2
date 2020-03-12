@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to profile_url
+      redirect_to profile_users_url
     else
       render :edit
     end

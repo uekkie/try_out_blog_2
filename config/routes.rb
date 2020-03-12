@@ -15,12 +15,10 @@ Rails.application.routes.draw do
     end
     get :following, :followers, on: :member
     resource :relationship, only: %i[create destroy]
+    collection do
+      get :profile
+    end
   end
-
-  scope module: :users do
-    get "profile" 
-  end
-
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/lo'
