@@ -1,4 +1,2 @@
-= form_for(current_user.active_relationships.build, remote: true) do |f|
-  %div
-    = hidden_field_tag :followed_id, user.id
+= form_with( url: user_relationship_path(user), remote: true) do |f|
   = f.submit "フォロー", class: "btn btn-primary"
