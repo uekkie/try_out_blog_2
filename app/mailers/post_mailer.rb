@@ -6,7 +6,7 @@ class PostMailer < ApplicationMailer
     if @posts.present?
       mail(
         subject: "「いいね」デイリーランキング",
-        to: users.pluck(:email)
+        bcc: users.pluck(:email)
       )
     end
   end
