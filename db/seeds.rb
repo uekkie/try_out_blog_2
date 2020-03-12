@@ -1,6 +1,6 @@
 
 # factory users
-if User.count < 20 then
+if User.count < 20
   1..20.times do
     email = Faker::Internet.email
     user = User.new(
@@ -17,7 +17,7 @@ if User.count < 20 then
 end
 
 
-if Post.count < 100 then
+if Post.count < 100
   user_ids = User.pluck(:id)
   1..100.times do
     Post.create!(
