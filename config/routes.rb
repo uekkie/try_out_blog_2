@@ -14,13 +14,13 @@ Rails.application.routes.draw do
       resources :comments, only: %i[create]
     end
     get :following, :followers, on: :member
+    resource :relationship, only: %i[create destroy]
   end
 
   scope module: :users do
     get "profile" 
   end
 
-  resources :relationships, only: %i[create destroy]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/lo'

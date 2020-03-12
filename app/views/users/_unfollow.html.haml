@@ -1,2 +1,2 @@
-= form_for(current_user.active_relationships.find_by(followed_id: user.id), remote: true, html: {method: :delete }) do |f|
+= form_with(url: user_relationship_path(user.id), remote: true, html: { method: :delete }) do |f|
   = f.submit "フォロー解除", class: "btn btn-danger"
