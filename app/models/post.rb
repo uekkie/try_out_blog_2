@@ -7,6 +7,10 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :content, presence: true, length: {maximum: 140}
 
+  has_many :likes_create_with_in_yesterday,
+           -> { where(created_at: 1.day.ago.all_day) },
+           class_name: 'Like'
+
   scope :recent, -> { order(created_at: :desc) }
 
   mount_uploader :image, PostUploader
@@ -19,21 +23,10 @@ class Post < ApplicationRecord
     likes.find_by(user_id: user.id)
   end
 
-  def self.order_by_ids(ids)
-    order_by = ["case"]
-    ids.each_with_index.map do |id, index|
-      order_by << "WHEN id='#{id}' THEN #{index}"
-    end
-    order_by << "end"
-    order(Arel.sql(order_by.join(" ")))
-  end
-
   def self.likes_ranking_yesterday(limit = 10)
-    ids = Like.all.group(:post_id)
-              .order(count: :desc)
-              .limit(limit)
-              .pluck(:post_id)
-
-    Post.where(id: ids).order_by_ids(ids)
+    Post.joins(:likes_create_with_in_yesterday)
+      .group(:id)
+      .order(Arel.sql('COUNT(likes.id) DESC'))
+      .limit(limit)
   end
 end
